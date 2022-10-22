@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:ad_samy/core/exceptions.dart';
 import 'package:ad_samy/features/team-projects/data/models/project-tasks-model.dart';
 import 'package:ad_samy/features/team-projects/data/models/team-all-projects-model.dart';
+import 'package:ad_samy/features/team-projects/data/models/team-all-tasks-model.dart';
 import 'package:ad_samy/features/team-projects/data/models/team-overview-model.dart';
 import 'package:ad_samy/features/team-projects/data/models/team-task-details-model.dart';
 import 'package:ad_samy/features/team-projects/data/network-services/api-list.dart';
@@ -12,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/errors.dart';
 import '../../../authentiacation/data/models/login-model.dart';
+import '../../domain/entities/team-all-tasks-entity.dart';
 
 abstract class TeamRemoteDataSource{
   Future<TeamOverViewModel>getTeamOverView({String?teamToken});
@@ -20,6 +22,7 @@ abstract class TeamRemoteDataSource{
   Future<TeamTaskDetailsModel>getTeamTaskDetails({String?teamToken,int?taskId});
   Future<LoginModel>getClientData();
   Future<Unit>updateTaskStatus({String?teamToken,int?taskId,int ?status});
+  Future<TeamAllTasksModel>getTeamAllTasks({String?teamToken});
 }
 
 class TeamRemoteDataSourceImplWithHttp implements TeamRemoteDataSource{
@@ -126,5 +129,21 @@ class TeamRemoteDataSourceImplWithHttp implements TeamRemoteDataSource{
       return Future.value(unit);
      }
     throw UnimplementedError();
+  }
+
+  @override
+  Future<TeamAllTasksModel> getTeamAllTasks({String? teamToken})async {
+    final response=await client.get(
+        Uri.parse(TeamApiList.getThisApi(endPoint:TeamApiList.getTeamAllTasks)),
+      headers: {
+        'Authorization': "Bearer $teamToken"},
+    );
+    if(response.statusCode==200){
+      final decodeResponse=jsonDecode(response.body);
+      final decodeToObject=TeamAllTasksModel.fromJson(json: decodeResponse);
+      return decodeToObject;
+    }else{
+      throw ServerErrorException();
+    }
   }
 }

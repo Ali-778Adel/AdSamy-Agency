@@ -14,7 +14,7 @@ class TaskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 8.0),
         child:
             Row(
               children: [

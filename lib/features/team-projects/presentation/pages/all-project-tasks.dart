@@ -68,7 +68,7 @@ class _ProjectAllTasksState extends State<ProjectAllTasks> {
                 depth: 10,
                 spread: 2,
                 borderRadius: 25,
-                child:CalendarDatePicker(lastDate: DateTime(2030), initialDate:DateTime.now(), onDateChanged: (DateTime value) {  }, firstDate: DateTime.now(),),
+                child:CalendarDatePicker(lastDate: DateTime(2023), initialDate:DateTime.now(), onDateChanged: (DateTime value) {  }, firstDate: DateTime.now(),),
               ),
               Padding(padding: const EdgeInsets.all(8.0),
                 child: Text(state!=null? state.projectTasksEntity!.projectsTasksEntityData![0].projectTitle!:'Project Name',style: Theme.of(context!).textTheme.headline1,),
@@ -80,7 +80,6 @@ class _ProjectAllTasksState extends State<ProjectAllTasks> {
       ),
     );
   }
-
 
   Widget _buildTasksListView({BuildContext ?context,GetTeamProjectTasksStates ?states}){
     if(states!=null&& states.projectTasksEntity!.projectsTasksEntityData!.isEmpty){

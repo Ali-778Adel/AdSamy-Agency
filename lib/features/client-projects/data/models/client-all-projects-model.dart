@@ -52,6 +52,7 @@ class ClientAllProjectsModel {
         projectVisibility: e.projectVisibility,
         projectCustomField1: e.projectCustomField1,
         projectCustomField2: e.projectCustomField2,
+        projectTasks: e.projectTasks
       );
     }).toList();
     return ClientAllProjectsEntity(
@@ -90,6 +91,7 @@ class ClientAllProjectsModelData {
   final String? assignedpermMilestoneManage;
   final String? assignedpermTasksCollaborate;
   final String? projectVisibility;
+  final dynamic projectTasks;
   final dynamic projectCustomField1;
   final dynamic projectCustomField2;
   ClientAllProjectsModelData({
@@ -122,6 +124,7 @@ class ClientAllProjectsModelData {
     this.clientpermExpensesView,
     this.assignedpermMilestoneManage,
     this.assignedpermTasksCollaborate,
+    this.projectTasks,
     this.projectVisibility,
     this.projectCustomField1,
     this.projectCustomField2,
@@ -160,6 +163,7 @@ class ClientAllProjectsModelData {
       assignedpermMilestoneManage: json['assignedperm_milestone_manage'],
       assignedpermTasksCollaborate: json['assignedperm_tasks_collaborate'],
       projectVisibility: json['project_visibility'],
+      projectTasks: json['project_tasks'],
       projectCustomField1: json['project_custom_field_1'],
       projectCustomField2: json['project_custom_field_2'],
     );

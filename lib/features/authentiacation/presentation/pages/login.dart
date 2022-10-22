@@ -5,7 +5,7 @@ import 'package:ad_samy/features/authentiacation/presentation/pages/verify-email
 import 'package:ad_samy/features/authentiacation/presentation/widgets/auth-customButton.dart';
 import 'package:ad_samy/features/authentiacation/presentation/widgets/auth-toogle-login-register.dart';
 import 'package:ad_samy/features/authentiacation/presentation/widgets/back-ground-image.dart';
-import 'package:ad_samy/features/services/presentation/pages/services_page.dart';
+import 'package:ad_samy/features/splash_screen/privacy-page.dart';
 import 'package:ad_samy/landing-pages/pages/employee-landing-page.dart';
 import 'package:ad_samy/utils/ext/context.dart';
 import 'package:ad_samy/utils/ext/forms-format.dart';
@@ -48,6 +48,7 @@ class _LoginState extends State<Login> {
   Widget _buildBody() {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
+        ContextExtensions.ctx=context;
         if(state.progressType==ProgressType.login){
           switch (state.progressStatus) {
             case ProgressStatus.loading:
@@ -57,8 +58,8 @@ class _LoginState extends State<Login> {
               break;
             case ProgressStatus.success:
               {
-                LoginEntity loginEntity=state.progressEntity as LoginEntity;
                 context.dismiss();
+                LoginEntity loginEntity=state.progressEntity as LoginEntity;
                 if(loginEntity.success!){
                   if(loginEntity.user!.type=='client'){
                     context.goTo(context, const ClientLandingPage());
@@ -67,6 +68,8 @@ class _LoginState extends State<Login> {
                   }
                 }else{
                   context.showMessage(loginEntity.message!);
+                  // context.dismiss();
+
                 }
               }
               break;
@@ -74,6 +77,7 @@ class _LoginState extends State<Login> {
               {
                 context.dismiss();
                 context.showMessage(state.errorMessage!);
+
               }
               break;
             default:
@@ -158,9 +162,9 @@ class _LoginState extends State<Login> {
            SpacerV(value:Dimens.space16 ,),
            _forgetPasswordOption(),
            // SpacerV(value:Dimens. ,),
-           const ToggleLoginRegisterWidget(
-              destination: SignUpPage(),
-              optionText: "Don't have an account :", buttonText: 'Sign Up')
+            TextButton(onPressed: () {
+              context.goTo(context,const PrivacyPage());
+            }, child: Text('Privacy&Policy',style:Theme.of(context).textTheme.bodyText1,),)
         ],
       ),
     );
@@ -200,3 +204,5 @@ class _LoginState extends State<Login> {
     );
   }
 }
+
+

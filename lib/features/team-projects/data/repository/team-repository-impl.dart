@@ -3,6 +3,7 @@ import 'package:ad_samy/core/exceptions.dart';
 import 'package:ad_samy/features/team-projects/data/data-source/team-remote-data-source.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/project-tasks-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-all-projects.dart';
+import 'package:ad_samy/features/team-projects/domain/entities/team-all-tasks-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-overview-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-task-details-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/repository/team-repository.dart';
@@ -86,6 +87,19 @@ class TeamRepositoryImpl implements TeamRepository{
    }else{
      return Left(OfflineFailure());
    }
+  }
+
+  @override
+  Future<Either<Failure, TeamAllTasksEntity>> getTeamAllTasks({String? teamToken})async {
+    if(await networkInfo.isConnected){
+      try{
+        final response=await teamRemoteDataSource.getTeamAllTasks(teamToken: teamToken);
+        return Right(response);
+      }on ServerErrorException{
+        return Left(ServerFailure());
+      }
+    }
+    return Left(OfflineFailure());
   }
 
 

@@ -5,7 +5,6 @@ import 'package:ad_samy/features/client-projects/domain/entities/project-entity.
 import 'package:ad_samy/features/client-projects/presentation/client-bloc/client-event.dart';
 import 'package:ad_samy/features/client-projects/presentation/client-bloc/client-states.dart';
 import 'package:ad_samy/features/client-projects/presentation/client-bloc/client-bloc.dart';
-import 'package:ad_samy/features/services/presentation/widgets/retry-conntection.dart';
 import 'package:ad_samy/utils/ext/context.dart';
 import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +65,6 @@ class _ClientsProjectsMainPage extends State<ClientsProjectsMainPage> {
   @override
   Widget build(BuildContext context) {
         return StreamBuilder<ClientProjectBloc>(
-
           builder: (context, snapshot) {
             return Scaffold(
               backgroundColor: Colors.white12,
@@ -245,7 +243,7 @@ class ProjectPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CustomProgressIndicator(
-                      progressValue: (state.clientProjectEntity!.data!.projectProgress!.toDouble())%100,
+                      progressValue:state.clientProjectEntity!.data!.projectProgress!.toDouble()/100,
 
                     ),
                     _divider(),

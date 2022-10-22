@@ -13,6 +13,7 @@ class TeamApiList{
   static const String projectTasks="get_project_tasks";
   static const String projectTasksDetails="get_task";
   static const String updateTaskStatus="update_task";
+  static const String getTeamAllTasks="get_team_tasks";
 
 //api address combination
   static String getThisApi( {String?endPoint}){

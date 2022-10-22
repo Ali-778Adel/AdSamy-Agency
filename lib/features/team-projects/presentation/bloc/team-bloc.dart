@@ -9,6 +9,7 @@ import '../../../../core/errors.dart';
 import '../../../../core/strings/exception_description.dart';
 import '../../domain/use-case/project-tasks-use-case.dart';
 import '../../domain/use-case/team-all-projects-use-case.dart';
+import '../../domain/use-case/team-all-tasks-use-case.dart';
 import '../../domain/use-case/team-overview-use-case.dart';
 import '../../domain/use-case/team-task-details-use-case.dart';
 
@@ -23,13 +24,15 @@ class TeamBloc extends Bloc<TeamEvents,TeamStates>{
   final TeamTaskDetailsUseCase teamTaskDetailsUseCase;
   final TeamRemoteDataSource teamRemoteDataSource;
   final UpdateTaskUseCase updateTaskUseCase;
+  final TeamAllTasksUseCase teamAllTasksUseCase;
   TeamBloc({
     required this.teamOverViewUseCase,
     required this.teamAllProjectsUseCase,
     required this.projectsTasksUseCase,
     required this.teamTaskDetailsUseCase,
     required this.teamRemoteDataSource,
-    required this.updateTaskUseCase
+    required this.updateTaskUseCase,
+    required this.teamAllTasksUseCase
 }):super(TeamInitialState()){
     on((event, emit)async {
       var x = await teamRemoteDataSource.getClientData();
@@ -93,6 +96,27 @@ class TeamBloc extends Bloc<TeamEvents,TeamStates>{
            emit(GetTeamProjectTasksStates(
                teamStatesStatus: TeamStatesStatus.success,
                projectTasksEntity: r
+           ));
+         });
+       }
+     }break;
+     case GetTeamAllTasksEvent:{
+       if(event is GetTeamAllTasksEvent){
+         emit(GetTeamAllTasksStates(
+           teamStatesStatus: TeamStatesStatus.loading,
+         ));
+         final either=await teamAllTasksUseCase.call(
+             teamToken:teamToken);
+         either.fold((l) {
+           emit(GetTeamAllTasksStates(
+               teamStatesStatus: TeamStatesStatus.failure,
+               errorMessage: _getErrorMessage(l)
+           ));
+         }, (r) {
+
+           emit(GetTeamAllTasksStates(
+               teamStatesStatus: TeamStatesStatus.success,
+               teamAllTasksEntity: r
            ));
          });
        }

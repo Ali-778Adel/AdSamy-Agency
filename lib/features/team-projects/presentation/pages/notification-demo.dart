@@ -96,7 +96,6 @@ class EmployeeMainPage extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       children: [
         const EmployeePageHeader(),
-        Padding(padding: const EdgeInsets.all(8.0),child: Center(child: Text('Your Tasks',style: Theme.of(context!).textTheme.headline1,)),),
         _tasksListView(context: context,state: state)
 
 

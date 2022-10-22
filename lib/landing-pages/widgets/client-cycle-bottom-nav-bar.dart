@@ -14,7 +14,6 @@ class ClientCycleNavBar extends StatelessWidget {
         currentIndex:currentIndex,
         items:  [
           _bottomNavBarItem( CupertinoIcons.home, 'Home'),
-          _bottomNavBarItem( CupertinoIcons.search, 'Search'),
           _bottomNavBarItem( CupertinoIcons.bell, 'Notification'),
           _bottomNavBarItem( CupertinoIcons.settings, 'Services'),
           _bottomNavBarItem( CupertinoIcons.profile_circled, 'Profile'),

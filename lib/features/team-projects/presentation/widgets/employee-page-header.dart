@@ -1,4 +1,5 @@
 import 'package:ad_samy/core/resources/core-dimens.dart';
+import 'package:ad_samy/landing-pages/pages/employee-landing-page.dart';
 import 'package:ad_samy/utils/ext/context.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class EmployeePageHeader extends StatelessWidget {
               size: CoreDimens.h5,
               color: Palette.darkBlue,
             ), onPressed: () {
-              context.goTo(context,const EmployeeNotificationsPageNavigationController());
+              context.goTo(context,const EmployeeLandingPage(navIndex: 2,));
           },)
         ],
       )

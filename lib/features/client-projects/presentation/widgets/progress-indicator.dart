@@ -43,6 +43,7 @@ class CustomProgressIndicator extends StatelessWidget {
                   radius: CoreDimens.h80,
                   lineWidth: 20.0,
                   arcType: ArcType.HALF,
+                  progressColor: Palette.yellowPrimary,
                   arcBackgroundColor: Palette.darkBlue,
                   animation: true,
                   reverse: false,

@@ -10,7 +10,6 @@ import 'package:ad_samy/features/services/presentation/show_services_bloc/bloc.d
 import 'package:ad_samy/features/services/presentation/show_services_bloc/bloc_events.dart';
 import 'package:ad_samy/features/services/presentation/widgets/card.dart';
 import 'package:ad_samy/features/services/presentation/widgets/page-title.dart';
-import 'package:ad_samy/features/services/presentation/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../show_services_bloc/bloc_states.dart';
@@ -68,7 +67,7 @@ class ServicesMainPage extends StatelessWidget {
               });
             }
             default:{
-              return Future.value(false);
+              return Future.value(true);
             }
           }
 

@@ -54,7 +54,7 @@ extension ContextExtensions on BuildContext {
           ctx = c;
 
           return WillPopScope(
-            onWillPop: () async => false,
+            onWillPop: () async => true,
             child: Material(
               color: Colors.transparent,
               child: Center(
@@ -79,7 +79,7 @@ extension ContextExtensions on BuildContext {
     builder: (c) {
       ctx = c;
       return WillPopScope(
-        onWillPop: () async => false,
+        onWillPop: () async => true,
         child: Material(
           color: Colors.transparent,
           child: Center(
@@ -95,7 +95,7 @@ extension ContextExtensions on BuildContext {
                   children:[
                 Text(message),
                 const SpacerV(),
-                TextButton(onPressed: ()=>Navigator.pop(c), child:const Text('Ok',))
+                TextButton(onPressed: ()=>ctx.dismiss(), child:const Text('Ok',))
               ]),
             ),
           ),

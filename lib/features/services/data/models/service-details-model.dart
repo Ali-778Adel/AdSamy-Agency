@@ -16,7 +16,7 @@ class ServiceDetailsModel extends ServiceDetailsEntity {
       status: json['status'],
       message: json['message'],
       serviceMainDataModel: json['data'] != null
-          ? ServiceMainDataModel.fromJson(json: json['category'])
+          ? ServiceMainDataModel.fromJson(json: json['data'])
           : null,
     );
   }
@@ -27,7 +27,7 @@ class ServiceMainDataModel extends ServiceMainDataEntity {
       : super(imageUrl: imageUrl, serviceDetailsEntityData: modelData);
   factory ServiceMainDataModel.fromJson({required Map<String, dynamic> json}) {
     return ServiceMainDataModel(
-      imageUrl: json['image_url'],
+      imageUrl: json['images_url'],
       modelData: json['category'] != null
           ? ModelData.fromJson(json: json['category'])
           : null,
@@ -36,7 +36,7 @@ class ServiceMainDataModel extends ServiceMainDataEntity {
 }
 
 class ModelData extends ServiceDetailsEntityData {
-  const ModelData(
+   ModelData(
       {int? categoryId,
       dynamic categoryCreated,
       dynamic categoryUpdated,
@@ -47,7 +47,13 @@ class ModelData extends ServiceDetailsEntityData {
       String? categoryVisibility,
       String? categoryIcon,
       String? categoryType,
-      String? categorySlug})
+      String? categorySlug,
+      String?mainImage,
+      String?subImage1,
+      String?subImage2,
+      int?serviceDiscount,
+
+      })
       : super(
             categoryId: categoryId,
             categoryCreated: categoryCreated,
@@ -59,7 +65,13 @@ class ModelData extends ServiceDetailsEntityData {
             categoryVisibility: categoryVisibility,
             categoryIcon: categoryIcon,
             categoryType: categoryType,
-            categorySlug: categorySlug);
+            categorySlug: categorySlug,
+            mainImage: mainImage,
+            subImage1: subImage1,
+            subImage2: subImage2,
+            serviceDiscount:serviceDiscount
+
+  );
 
   factory ModelData.fromJson({required Map<String, dynamic> json}) {
     return ModelData(
@@ -74,6 +86,10 @@ class ModelData extends ServiceDetailsEntityData {
       categoryIcon: json['category_icon'],
       categoryType: json['category_type'],
       categorySlug: json['category_slug'],
+      mainImage: json['main_image'],
+      subImage1: json['sup_image'],
+      subImage2: json['sup_image2'],
+      serviceDiscount: json['discount']
     );
   }
 }

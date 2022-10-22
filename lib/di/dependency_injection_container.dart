@@ -43,6 +43,7 @@ import '../features/client-projects/domain/repository/client-repository.dart';
 import '../features/client-projects/domain/use-cases/get-all-client-projects.dart';
 import '../features/services/data/repository/data_repository.dart';
 import '../features/team-projects/domain/use-case/project-tasks-use-case.dart';
+import '../features/team-projects/domain/use-case/team-all-tasks-use-case.dart';
 
 final sl=GetIt.instance;
 
@@ -128,7 +129,8 @@ Future<void>init()async{
       projectsTasksUseCase: sl(),
       teamTaskDetailsUseCase: sl(),
     teamRemoteDataSource: sl(),
-    updateTaskUseCase: sl()
+    updateTaskUseCase: sl(),
+    teamAllTasksUseCase: sl(),
   ));
 //use cases
 sl.registerLazySingleton(() => TeamOverViewUseCase(teamRepository: sl()));
@@ -136,6 +138,7 @@ sl.registerLazySingleton(() => TeamAllProjectsUseCase(teamRepository: sl()));
 sl.registerLazySingleton(() => ProjectsTasksUseCase(teamRepository: sl()));
 sl.registerLazySingleton(() => TeamTaskDetailsUseCase(teamRepository: sl()));
 sl.registerLazySingleton(() => UpdateTaskUseCase(teamRepository: sl()));
+sl.registerLazySingleton(() => TeamAllTasksUseCase(teamRepository: sl()));
 
 //abstracts
   sl.registerLazySingleton<TeamRepository>(() => TeamRepositoryImpl(teamRemoteDataSource: sl(), networkInfo: sl()));

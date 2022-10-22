@@ -1,5 +1,6 @@
 import 'package:ad_samy/features/team-projects/domain/entities/project-tasks-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-all-projects.dart';
+import 'package:ad_samy/features/team-projects/domain/entities/team-all-tasks-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-overview-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-task-details-entity.dart';
 import 'package:dartz/dartz.dart';
@@ -12,4 +13,5 @@ abstract class TeamRepository{
   Future<Either<Failure,ProjectTasksEntity>>getProjectTasks({String?teamToken,int?projectId});
   Future<Either<Failure,TeamTaskDetailsEntity>>getTaskDetails({String?teamToken,int?taskId});
   Future<Either<Failure,Unit>>updateTaskStatus({String?teamToken,int?taskId,int?status});
+  Future<Either<Failure,TeamAllTasksEntity>>getTeamAllTasks({String?teamToken});
 }

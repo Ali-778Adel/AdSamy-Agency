@@ -1,6 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:ad_samy/core/resources/palette.dart';
 import 'package:ad_samy/features/authentiacation/presentation/widgets/spacer-v.dart';
 import 'package:ad_samy/features/services/presentation/resources/services-dimens.dart';
+import 'package:ad_samy/features/services/presentation/show_services_bloc/bloc_states.dart';
 import 'package:ad_samy/features/services/presentation/widgets/rating-bar.dart';
 import 'package:flutter/material.dart';
 import '../../../authentiacation/presentation/widgets/auth-customButton.dart';
@@ -8,7 +11,8 @@ import '../../../authentiacation/presentation/widgets/auth-customButton.dart';
 class ServiceDetailsWidget extends StatelessWidget {
 
   final Function()onTap;
-  const ServiceDetailsWidget({Key? key,required this.onTap}) : super(key: key);
+  final ShowServiceDetailsStates?state;
+  const ServiceDetailsWidget({Key? key,required this.onTap, this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +27,19 @@ class ServiceDetailsWidget extends StatelessWidget {
               widthFactor: MediaQuery.of(context).size.width,
               alignment: Alignment.centerLeft,
               child: Text(
-                ' Social Media Management ',
+                '${state!.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.categoryName}',
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
-            _serviceImage(context),
+            _serviceImage(
+                context,
+              serviceImage:'${state!.serviceDetailsEntity!.serviceMainDataEntity!.imageUrl}/${state!.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.subImage2}'
+            ),
             Align(
               widthFactor: MediaQuery.of(context).size.width,
               alignment: Alignment.centerLeft,
               child: Text(
-                ' Lorem ipsum dolor sit amet, consetetur sadipscing elitr,'
-                ' sed diam nonumy eirmod tempor invidunt ut labore et'
-                ' dolore magna aliquyam erat, sed diam voluptua.'
-                ' At vero eos et accusam et justo duo dolores et ea rebum ',
+              state!.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.categoryDescription,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
@@ -43,7 +47,7 @@ class ServiceDetailsWidget extends StatelessWidget {
               value: ServicesDimens.space16,
             ),
             const RatingBarWidget(),
-            _horizontalScrollBar(context),
+            _horizontalScrollBar(context:context,states: state),
             SpacerV(
               value: ServicesDimens.space24,
             ),
@@ -62,7 +66,10 @@ class ServiceDetailsWidget extends StatelessWidget {
     );
   }
 
-  Widget _serviceImage(BuildContext context, {int? index}) {
+  Widget _serviceImage(BuildContext context, {
+    int? index,
+    String?serviceImage
+  }) {
     return Container(
       padding: const EdgeInsets.only(top: 12, bottom: 12),
       width: MediaQuery.of(context).size.width,
@@ -74,10 +81,10 @@ class ServiceDetailsWidget extends StatelessWidget {
           footer: Container(
             padding: const EdgeInsets.all(8),
             color: Palette.yellowAccent,
-            child: const Text(
-              '50% Discount ',
+            child:  Text(
+              '${state!.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.serviceDiscount??'10%'} Discount ',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style:const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
                 fontSize: 18,
@@ -85,32 +92,48 @@ class ServiceDetailsWidget extends StatelessWidget {
             ),
           ),
           child: Image.network(
-            'https://resources.pulse.icc-cricket.com/ICC/photo/2018/04/22/c19486c2-4e5b-48c4-82af-c6d0eebb7bd2/Main.jpg',
-            fit: BoxFit.fill,
+            serviceImage!,
+            fit: BoxFit.cover,
           ),
         ),
       ),
     );
   }
 
-  List<Widget> _listsWidget(BuildContext context) {
-    return List.generate(
-        10,
-        (index) => Container(
-            margin: const EdgeInsets.only(right: 10),
-            child: _serviceImage(context, index: index)));
-  }
+  // List<Widget> _listsWidget(BuildContext context) {
+  //   return List.generate(
+  //       10,
+  //       (index) => Container(
+  //           margin: const EdgeInsets.only(right: 10),
+  //           child: _serviceImage(context, index: index)));
+  // }
 
-  Widget _horizontalScrollBar(BuildContext context) {
+  Widget _horizontalScrollBar({BuildContext? context,ShowServiceDetailsStates?states}) {
     return SizedBox(
         height: ServicesDimens.cardH3,
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context!).size.width,
         child: ListView(
-          itemExtent: MediaQuery.of(context).size.width * .45,
+          // itemExtent: MediaQuery.of(context).size.width * .50,
           padding: const EdgeInsets.all(10),
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          children: _listsWidget(context),
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.only(left: 5,right:5),
+              child: Image.network('${states!.serviceDetailsEntity!.serviceMainDataEntity!.imageUrl}/${states.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.mainImage}'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.only(left: 5,right:5),
+              child: Image.network('${states.serviceDetailsEntity!.serviceMainDataEntity!.imageUrl}/${states.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.subImage1}'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.only(left: 5,right:5),
+              child: Image.network('${states.serviceDetailsEntity!.serviceMainDataEntity!.imageUrl}/${states.serviceDetailsEntity!.serviceMainDataEntity!.serviceDetailsEntityData!.subImage2}'),
+            )
+          ],
         ));
   }
 }

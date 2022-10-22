@@ -1,7 +1,7 @@
 import 'package:ad_samy/features/client-projects/presentation/client-bloc/client-states.dart';
 import 'package:ad_samy/features/client-projects/presentation/client-bloc/client-bloc.dart';
 import 'package:ad_samy/features/client-projects/presentation/pages/client-projects-main-page.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ad_samy/features/client-projects/presentation/widgets/client-page-header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
@@ -33,7 +33,7 @@ class _ControlClientProjects extends State<ControlClientProjects> {
           BlocProvider.of<ClientProjectBloc>(context).currentIndex;
         return WillPopScope(
           onWillPop: () {
-              print('on will pop');
+
               switch (currentIndex) {
                 case 1:
                   {
@@ -95,7 +95,7 @@ class ClientAllProjectsPage extends StatelessWidget {
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   children: [
-                    const EmployeePageHeader(),
+                    const ClientPageHeader(),
                     _catText(context: context, text: 'In Work'),
                     _buildInWorkListView(state: state),
                   ],

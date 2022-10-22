@@ -16,7 +16,6 @@ class ServiceMainDataEntity extends Equatable{
  const ServiceMainDataEntity({this.imageUrl,this.serviceDetailsEntityData});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [imageUrl,serviceDetailsEntityData];
 }
 
@@ -32,6 +31,10 @@ class ServiceDetailsEntityData extends Equatable{
  final String ?categoryIcon;
  final String ?categoryType;
  final String ?categorySlug;
+ final String?mainImage;
+ final String?subImage1;
+ final String?subImage2;
+ final int?serviceDiscount;
 
 const ServiceDetailsEntityData(
       {
@@ -45,7 +48,12 @@ const ServiceDetailsEntityData(
         this.categoryVisibility,
         this.categoryIcon,
         this.categoryType,
-        this.categorySlug});
+        this.categorySlug,
+        this.mainImage,
+        this.subImage1,
+        this.subImage2,
+        this.serviceDiscount,
+      });
 
   @override
   List<Object?> get props => [
@@ -59,6 +67,10 @@ const ServiceDetailsEntityData(
     categoryVisibility,
     categoryIcon,
     categoryType,
-    categorySlug
+    categorySlug,
+    mainImage,
+    subImage1,
+    subImage2,
+    serviceDiscount,
   ];
 }

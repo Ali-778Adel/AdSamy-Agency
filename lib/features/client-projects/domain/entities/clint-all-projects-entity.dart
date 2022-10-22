@@ -36,6 +36,7 @@ class ClientAllProjectsEntityData{
   final String? assignedpermMilestoneManage;
   final String? assignedpermTasksCollaborate;
   final String? projectVisibility;
+  final dynamic projectTasks;
   final dynamic projectCustomField1;
   final dynamic projectCustomField2;
   ClientAllProjectsEntityData({
@@ -71,6 +72,7 @@ class ClientAllProjectsEntityData{
     this. projectVisibility,
     this.projectCustomField1,
     this. projectCustomField2,
+    this.projectTasks,
 
 });
 }

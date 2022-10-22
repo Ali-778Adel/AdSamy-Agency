@@ -50,12 +50,14 @@ class ClientProjectItem extends StatelessWidget {
                     children: [
                       Text(projectName,style:Theme.of(context).textTheme.headline1),
                       const SpacerV(),
-                      Text('24 Tasks',style:Theme.of(context).textTheme.bodyText1),
+                      Text(
+                          '${states.clientAllProjectsEntity!.data![index].projectTasks??'7'}'
+                          ,style:Theme.of(context).textTheme.bodyText1),
                     ],
                   ),
 
                 ),
-                _itemIndicator(.83)
+                _itemIndicator(states.clientAllProjectsEntity!.data![index].projectProgress!.toDouble()/100)
               ],
             ),
           ),

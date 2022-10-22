@@ -41,6 +41,7 @@ class ServiceDataSourceImplWithHttp implements ServicesDataSource {
       'id':'$catId'
     });
       if(response.statusCode==200){
+        print(response.body);
         final decodeResponse=jsonDecode(response.body);
         final result=ServiceDetailsModel.fromJson(json: decodeResponse);
         return result;

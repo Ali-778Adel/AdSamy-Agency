@@ -1,4 +1,5 @@
 import 'package:ad_samy/features/team-projects/domain/entities/team-all-projects.dart';
+import 'package:ad_samy/features/team-projects/domain/entities/team-all-tasks-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-overview-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-task-details-entity.dart';
 
@@ -39,6 +40,19 @@ class GetTeamProjectTasksStates extends TeamStates {
   GetTeamProjectTasksStates({
     this.teamStatesStatus,
     this.projectTasksEntity,
+    this.errorMessage
+  });
+
+}
+
+class GetTeamAllTasksStates extends TeamStates {
+  final TeamStatesStatus ?teamStatesStatus;
+  final TeamAllTasksEntity?teamAllTasksEntity;
+  final String?errorMessage;
+
+  GetTeamAllTasksStates({
+    this.teamStatesStatus,
+    this.teamAllTasksEntity,
     this.errorMessage
   });
 
