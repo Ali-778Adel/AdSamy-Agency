@@ -53,7 +53,7 @@ class ServicesWidget extends StatelessWidget {
                 flex: 4,
                 child: Image.network(
                   '${services.data!.imageBaseUrl}/${services.data!.categories![index].catImage}',
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 )),
             SpacerV(
               value: ServicesDimens.space24,

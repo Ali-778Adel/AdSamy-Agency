@@ -51,7 +51,7 @@ class ServicesMainPage extends StatelessWidget {
               return BlocProvider.of<ShowAllServicesBloc>(context)
                   .customPop(context).then((value) {
                 BlocProvider.of<ShowAllServicesBloc>(context)
-                    .add(ShowServiceDetailsEvent(index: 1));
+                    .add(ShowServiceDetailsEvent(index: 1,catId:int.parse(BlocProvider.of<ShowAllServicesBloc>(context).desiredCategoryId!)));
                 return value;
               });
 

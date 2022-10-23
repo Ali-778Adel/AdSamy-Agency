@@ -53,11 +53,21 @@ dependencies:
   animated_toggle_switch: ^0.5.2
 
 
+
+
+
 #  flat_icons_flutter: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/splash_screen/ic_launcher.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -80,6 +90,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/splash_screen/logo.png
+    - assets/splash_screen/ic_launcher.png
     - assets/splash_screen/person.png
     - assets/splash_screen/header.png
     - assets/splash_screen/profile2.png
