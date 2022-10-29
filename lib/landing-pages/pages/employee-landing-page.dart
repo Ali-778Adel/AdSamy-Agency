@@ -35,7 +35,6 @@ class _EmployeeLandingPageState extends State<EmployeeLandingPage> {
       bottomNavigationBar: EmployeeCycleNavBar(
         currentIndex: currentIndex,
         onTap: (index) {
-
           setState(() {
             navIndex != null ? currentIndex=navIndex=index:  currentIndex=index;
             switch(index){

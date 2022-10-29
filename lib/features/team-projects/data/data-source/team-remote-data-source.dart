@@ -7,13 +7,10 @@ import 'package:ad_samy/features/team-projects/data/models/team-all-tasks-model.
 import 'package:ad_samy/features/team-projects/data/models/team-overview-model.dart';
 import 'package:ad_samy/features/team-projects/data/models/team-task-details-model.dart';
 import 'package:ad_samy/features/team-projects/data/network-services/api-list.dart';
-import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../../core/errors.dart';
 import '../../../authentiacation/data/models/login-model.dart';
-import '../../domain/entities/team-all-tasks-entity.dart';
+import '../models/update-task-model.dart';
 
 abstract class TeamRemoteDataSource{
   Future<TeamOverViewModel>getTeamOverView({String?teamToken});
@@ -21,7 +18,7 @@ abstract class TeamRemoteDataSource{
   Future<ProjectTasksModel>getTeamProjectTasks({String?teamToken,int?projectId});
   Future<TeamTaskDetailsModel>getTeamTaskDetails({String?teamToken,int?taskId});
   Future<LoginModel>getClientData();
-  Future<Unit>updateTaskStatus({String?teamToken,int?taskId,int ?status});
+  Future<UpdateTaskModel>updateTaskStatus({String?teamToken,int?taskId,int ?status});
   Future<TeamAllTasksModel>getTeamAllTasks({String?teamToken});
 }
 
@@ -114,7 +111,7 @@ class TeamRemoteDataSourceImplWithHttp implements TeamRemoteDataSource{
   }
 
   @override
-  Future<Unit> updateTaskStatus({String?teamToken,int? taskId,int?status})async {
+  Future<UpdateTaskModel> updateTaskStatus({String?teamToken,int? taskId,int?status})async {
      final response=await client.post(
          Uri.parse(TeamApiList.getThisApi(endPoint: TeamApiList.updateTaskStatus)),
        body: {'id':'$taskId',
@@ -125,10 +122,14 @@ class TeamRemoteDataSourceImplWithHttp implements TeamRemoteDataSource{
 
      );
      if(response.statusCode==200){
+       final decodeResponse=jsonDecode(response.body);
+       final responseToModel=UpdateTaskModel.fromJson(json: decodeResponse);
       print(response.body);
-      return Future.value(unit);
+      return Future.value(responseToModel);
+     }else{
+       throw ServerErrorException();
      }
-    throw UnimplementedError();
+
   }
 
   @override

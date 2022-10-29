@@ -24,8 +24,10 @@ class GetTeamTaskDetailsEvent extends TeamEvents{
   final String?teamToken;
   final int ?taskId;
   final int?navIndex;
+
   // final bool updateTaskState=false;
-  GetTeamTaskDetailsEvent({this.teamToken,this.taskId,this.navIndex, });
+  GetTeamTaskDetailsEvent({
+    this.teamToken,this.taskId,this.navIndex,});
 }
 class GetTeamAllTasksEvent extends TeamEvents{
   final String?teamToken;

@@ -249,7 +249,9 @@ class EmployeeMainPage extends StatelessWidget {
                 onTap: (){
                   BlocProvider.of<TeamBloc>(context).add(
                       GetTeamTaskDetailsEvent(
-                          taskId:state!=null? state.teamOverViewEntity!.teamOverViewEntityData!.todaysTasks![index].taskId??1:1,
+                          taskId:state!=null?
+                          state.teamOverViewEntity!.teamOverViewEntityData!.todaysTasks![index].taskId
+                              ??1:1,
                           navIndex: 3
                       ));
                 },

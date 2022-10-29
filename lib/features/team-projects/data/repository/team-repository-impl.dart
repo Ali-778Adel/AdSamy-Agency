@@ -6,6 +6,7 @@ import 'package:ad_samy/features/team-projects/domain/entities/team-all-projects
 import 'package:ad_samy/features/team-projects/domain/entities/team-all-tasks-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-overview-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/entities/team-task-details-entity.dart';
+import 'package:ad_samy/features/team-projects/domain/entities/update-team-task-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/repository/team-repository.dart';
 import 'package:dartz/dartz.dart';
 
@@ -72,7 +73,7 @@ class TeamRepositoryImpl implements TeamRepository{
   }
 
   @override
-  Future<Either<Failure, Unit>> updateTaskStatus({String?teamToken,int? taskId,int?status})async {
+  Future<Either<Failure, UpdateTaskEntity>> updateTaskStatus({String?teamToken,int? taskId,int?status})async {
    if(await networkInfo.isConnected){
      try{
        final response =await teamRemoteDataSource.updateTaskStatus(

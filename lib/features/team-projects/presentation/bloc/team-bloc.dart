@@ -1,7 +1,9 @@
 import 'package:ad_samy/features/team-projects/data/data-source/team-remote-data-source.dart';
+import 'package:ad_samy/features/team-projects/domain/entities/update-team-task-entity.dart';
 import 'package:ad_samy/features/team-projects/domain/use-case/update-task-use-case.dart';
 import 'package:ad_samy/features/team-projects/presentation/bloc/team-events.dart';
 import 'package:ad_samy/features/team-projects/presentation/bloc/team-states.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -74,9 +76,11 @@ class TeamBloc extends Bloc<TeamEvents,TeamStates>{
                teamStatesStatus: TeamStatesStatus.success,
                teamAllProjectsEntity: r
            ));
-         });
+         }
+         );
        }
-     }break;
+     }
+     break;
      case GetTeamProjectTasksEvent:{
        if(event is GetTeamProjectTasksEvent){
          navigateTo(2);
@@ -131,6 +135,7 @@ class TeamBloc extends Bloc<TeamEvents,TeamStates>{
              teamToken:teamToken,
              taskId: event.taskId,
          );
+         // if
          either.fold((l) {
            emit(GetTeamTaskDetailsStates(
                teamStatesStatus: TeamStatesStatus.failure,
@@ -182,6 +187,9 @@ class TeamBloc extends Bloc<TeamEvents,TeamStates>{
    }
     });
   }
+
+
+
   void navigateTo(int index) {
     backstack.add(index);
     currentIndex = index;

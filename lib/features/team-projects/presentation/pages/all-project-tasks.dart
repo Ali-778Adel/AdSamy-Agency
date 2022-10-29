@@ -107,7 +107,7 @@ class _ProjectAllTasksState extends State<ProjectAllTasks> {
                     BlocProvider.of<TeamBloc>(context).add(
                         GetTeamTaskDetailsEvent(
                         taskId:states!=null?states.projectTasksEntity!.projectsTasksEntityData![index].taskId:0
-                        ,navIndex: 3,
+                          ,navIndex: 3,
                     ));
                   },
                 );
