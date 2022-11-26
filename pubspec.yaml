@@ -51,6 +51,9 @@ dependencies:
   menu_button: ^1.4.2+1
   modal_bottom_sheet: ^2.0.0
   animated_toggle_switch: ^0.5.2
+  smooth_page_indicator: ^1.0.0+2
+  carousel_slider: ^4.1.1
+  url_launcher: ^6.1.6
 
 
 
@@ -89,6 +92,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/our_works/forchetta.jpg
+    - assets/our_works/elite.jpg
+    - assets/our_works/greencandles.jpg
+    - assets/our_works/lebskom.jpg
+    - assets/our_works/elite.jpg
     - assets/splash_screen/logo.png
     - assets/splash_screen/ic_launcher.png
     - assets/splash_screen/person.png
@@ -96,9 +104,35 @@ flutter:
     - assets/splash_screen/profile2.png
     - assets/success.png
     - assets/noresult.jpg
-    - "assets/images/"
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+    - assets/onboarding/on_boarding_image1.png
+    - assets/onboarding/on_boarding_image2.png
+    - assets/onboarding/on_boarding_image3.png
+    - assets/social/behance.png
+    - assets/social/facebook.png
+    - assets/social/instagram.png
+    - assets/social/twitter.png
+    - assets/social/linkedin.png
+#   services icons
+    - assets/services/ads.png
+    - assets/services/brand-positioning.png
+    - assets/services/content-writting.png
+    - assets/services/data-analatics.png
+    - assets/services/digital-marketing.png
+    - assets/services/e-commerce.png
+    - assets/services/event-mangement.png
+    - assets/services/google-business.png
+    - assets/services/lead-generation.png
+    - assets/services/market-research.png
+    - assets/services/payment-gateway.png
+    - assets/services/seo.png
+    - assets/services/social-media-mangement.png
+    - assets/services/strategy.png
+    - assets/services/ui.png
+    - assets/services/video-production.png
+    - assets/services/web-app-development.png
+#   - avatars
+    - assets/avatar/man.png
+    - assets/avatar/woman.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -119,6 +153,14 @@ flutter:
         - asset: "fonts/Lemon-regular.ttf"
           style: "normal"
           weight: 400
+    - family: "Exo"
+      fonts:
+        - asset: "fonts/Exo/static/Exo-Regular.ttf"
+          style: "normal"
+          weight: 400
+        - asset: "fonts/Exo/static/Exo-Medium.ttf"
+          style: "normal"
+          weight: 500
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf

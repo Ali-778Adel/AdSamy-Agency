@@ -1,8 +1,8 @@
-import 'package:ad_samy/features/profile/presentation/pages/profile-main-page.dart';
 import 'package:flutter/material.dart';
-import '../../features/client-projects/presentation/pages/client-all-projects-page.dart';
-import '../../features/client-projects/presentation/pages/client-notification-page.dart';
-import '../../features/services/presentation/pages/services_page.dart';
+import '../../applications/client-application/client-features/client-projects/presentation/pages/client-all-projects-page.dart';
+import '../../applications/client-application/client-features/client-projects/presentation/pages/client-notification-page.dart';
+import '../../applications/lead-application/services/presentation/pages/lead-home-page-controller.dart';
+import '../../core/core-features/profile/presentation/pages/profile-main-page.dart';
 import '../widgets/client-cycle-bottom-nav-bar.dart';
 
 class ClientLandingPage extends StatefulWidget {
@@ -15,9 +15,10 @@ class ClientLandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<ClientLandingPage> {
   List<Widget> indexedWidget = [
-    const  ControlClientProjects(),
+    LeadHomePageController(),
+    ControlClientProjects(),
     const ClientNotificationsPage(),
-    ServicesMainPage(),
+    const Scaffold(),
     const ProfileMainPage(),
   ];
     int? navIndex;

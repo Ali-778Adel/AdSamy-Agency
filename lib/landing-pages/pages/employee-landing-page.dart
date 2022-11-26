@@ -1,11 +1,13 @@
-import 'package:ad_samy/features/profile/presentation/pages/profile-main-page.dart';
-import 'package:ad_samy/features/team-projects/presentation/bloc/team-events.dart';
-import 'package:ad_samy/features/team-projects/presentation/pages/employee-main-pade.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../features/team-projects/presentation/bloc/team-bloc.dart';
-import '../../features/team-projects/presentation/pages/notification-demo.dart';
-import '../../features/team-projects/presentation/pages/team-all-tasks.dart';
+import '../../applications/employee-application/employee-features/employee-all-tasks-feature/presentation/pages/employee-all-tasks-controller-page.dart';
+import '../../applications/employee-application/employee-features/employee-overview-feature/presentation/bloc/team-bloc.dart';
+import '../../applications/employee-application/employee-features/employee-overview-feature/presentation/bloc/team-events.dart';
+import '../../applications/employee-application/employee-features/employee-overview-feature/presentation/pages/employee-navigation-controller-.dart';
+import '../../applications/employee-application/employee-features/employee-overview-feature/presentation/pages/notification-demo.dart';
+import '../../core/core-features/profile/presentation/pages/profile-main-page.dart';
+import '../../core/core-features/profile/presentation/profile-bloc/profile-bloc.dart';
+import '../../core/core-features/profile/presentation/profile-bloc/profile-events.dart';
 import '../widgets/employee-cycle-bottom-nav-bar.dart';
 
 class EmployeeLandingPage extends StatefulWidget {
@@ -19,7 +21,7 @@ class EmployeeLandingPage extends StatefulWidget {
 class _EmployeeLandingPageState extends State<EmployeeLandingPage> {
   List<Widget> indexedWidget = [
     const EmployeeNavigationController(),
-    const TeamAllTasks(),
+     EmployeeAllTasksController(),
     const EmployeeNotificationsPageNavigationController(),
     const ProfileMainPage(),
   ];
@@ -38,15 +40,32 @@ class _EmployeeLandingPageState extends State<EmployeeLandingPage> {
           setState(() {
             navIndex != null ? currentIndex=navIndex=index:  currentIndex=index;
             switch(index){
-              case 0:{
-                BlocProvider.of<TeamBloc>(context).add(GetTeamOverViewEvents());
-              }break;
+              case 0:
+              {
+                BlocProvider.of<TeamBloc>(context).add(GetTeamOverViewEvents(
+                  navIndex: BlocProvider.of<TeamBloc>(context).currentIndex,
+                  wichCycle: WichCycle.homeCycle
+                ));
+              }
+
+              break;
               case 1:{
-              BlocProvider.of<TeamBloc>(context).add(GetTeamAllTasksEvent());
+
+              BlocProvider.of<TeamBloc>(context).add(
+                  GetTeamAllTasksEvent
+                    (
+                      navIndex: BlocProvider.of<TeamBloc>(context).allTasksCycleIndex,
+                      wichCycle: WichCycle.allTasksCycle));
             }break;
               case 2:{
-                BlocProvider.of<TeamBloc>(context).add(GetTeamOverViewEvents());
+                BlocProvider.of<TeamBloc>(context).add(GetTeamOverViewEvents(
+                    navIndex: BlocProvider.of<TeamBloc>(context).notificationCycleIndex,
+                    wichCycle: WichCycle.notificationsCycle));
               }break;
+              case 2:{
+                BlocProvider.of<ProfileBloc>(context).add(GetUserCachedDataEvent());
+              }break;
+
 
             }
 

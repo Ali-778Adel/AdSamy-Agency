@@ -1,8 +1,7 @@
-import 'package:ad_samy/features/authentiacation/presentation/widgets/spacer-v.dart';
 import 'package:flutter/material.dart';
-
+import '../../core/core-features/authentiacation/presentation/resources/dimens.dart';
+import '../../core/core-features/authentiacation/presentation/widgets/spacer-v.dart';
 import '../../core/widgets/loading-widget.dart';
-import '../../features/authentiacation/presentation/resources/dimens.dart';
 import '../../core/resources/palette.dart';
 
 extension ContextExtensions on BuildContext {
@@ -109,7 +108,7 @@ extension ContextExtensions on BuildContext {
     builder: (c) {
       ctx = c;
       return WillPopScope(
-        onWillPop: () async => false,
+        onWillPop: () async => true,
         child: Material(
           color: Colors.transparent,
           child: Center(

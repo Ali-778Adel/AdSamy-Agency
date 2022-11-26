@@ -47,4 +47,6 @@ class CoreDimens{
   static double space80 = 80.w;
   static double space96 = 96.w;
   static double space104 = 96.w;
+  static double space184 = 184.w;
+
 }

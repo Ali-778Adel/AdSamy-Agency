@@ -1,16 +1,19 @@
-import 'package:ad_samy/features/authentiacation/presentation/resources/dimens.dart';
+import 'package:ad_samy/core/resources/core-dimens.dart';
 import 'package:ad_samy/core/resources/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../core-features/authentiacation/presentation/resources/dimens.dart';
+
 class MyAppBar{
-final String appBarTitle;
-MyAppBar({required this.appBarTitle});
-  PreferredSizeWidget call(){
+// final String appBarTitle;
+// BuildContext context;
+MyAppBar();
+PreferredSizeWidget call({String?appBarTitle,required BuildContext context}){
     return PreferredSize(
         preferredSize:  Size.fromHeight(Dimens.h1),
         child: AppBar(
-          backgroundColor: Colors.white.withOpacity(.96),
+          backgroundColor: Colors.transparent,
           systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white),
           elevation: 0,
           title: Container(
@@ -19,7 +22,7 @@ MyAppBar({required this.appBarTitle});
             child: Align(
               alignment:Alignment.bottomLeft,
               child: Text(
-              appBarTitle,
+              appBarTitle??'',
               style: TextStyle(
                 color: Palette.darkBlue,
                 fontWeight: FontWeight.bold,
@@ -28,6 +31,24 @@ MyAppBar({required this.appBarTitle});
                 ,),
         ),
             ),
-          ),));
+          ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: CircleAvatar(
+            backgroundColor: Palette.darkBlue,
+            radius: CoreDimens.h6,
+            child:  Center(
+              child: IconButton(
+                icon: Icon(
+                    Icons.arrow_back_ios,
+                  size: CoreDimens.h6,
+                  color: Palette.white,
+                ), onPressed: () {
+                  Navigator.of(context).pop();
+              },),
+            ),
+          ),
+        ),
+        ));
   }
 }

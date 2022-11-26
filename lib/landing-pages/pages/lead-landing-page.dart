@@ -1,6 +1,7 @@
-import 'package:ad_samy/features/services/presentation/pages/services_page.dart';
-import 'package:ad_samy/landing-pages/widgets/lead-bottom-nav-bar.dart';
 import 'package:flutter/material.dart';
+
+import '../../applications/lead-application/services/presentation/pages/lead-home-page-controller.dart';
+
 
 class LeadLandingPage extends StatefulWidget {
   const LeadLandingPage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class LeadLandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LeadLandingPage> {
   List<Widget> indexedWidget = [
-    ServicesMainPage(),
+    LeadHomePageController(),
     const Scaffold(),
     const Scaffold(),
     const Scaffold(),
