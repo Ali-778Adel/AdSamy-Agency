@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:ad_samy/applications/lead-application/services/presentation/pages/lead-home-page.dart';
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import 'package:ad_samy/utils/ext/context.dart';
 import 'package:ad_samy/utils/ext/forms-format.dart';
 import 'package:flutter/material.dart';

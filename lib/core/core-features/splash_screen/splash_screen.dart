@@ -1,12 +1,19 @@
+<<<<<<< HEAD
  import 'package:ad_samy/core/core-features/authentiacation/data/data-source/auth-local-data-source.dart';
 import 'package:ad_samy/core/functions/navigation/navigation_without_back_route.dart';
+=======
+ import 'package:ad_samy/core/functions/navigation/navigation_without_back_route.dart';
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import 'package:ad_samy/core/resources/palette.dart';
 import 'package:ad_samy/core/widgets/intro-background-container.dart';
 import 'package:ad_samy/core/widgets/loading-widget.dart';
 import 'package:ad_samy/landing-pages/pages/employee-landing-page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+<<<<<<< HEAD
 import 'package:shared_preferences/shared_preferences.dart';
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import '../../../landing-pages/pages/client-landing-page.dart';
 import '../authentiacation/domain/entities/login-entity.dart';
 import '../authentiacation/presentation/bloc/auth-bloc.dart';
@@ -50,8 +57,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Widget _whichLandingWidget(){
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
    return BlocBuilder<AuthBloc,AuthState>(
        builder: (context,state){
          BlocProvider.of<AuthBloc>(context).add(GetAuthCachedDataEvent());

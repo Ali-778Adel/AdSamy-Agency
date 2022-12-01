@@ -3,11 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/core-features/authentiacation/presentation/widgets/spacer-v.dart';
 import '../../../../../core/resources/palette.dart';
 import '../../domain/entities/service_entity.dart';
+<<<<<<< HEAD
 import '../lead-blocs/lead-home-page-bloc/bloc.dart';
 import '../lead-blocs/lead-home-page-bloc/bloc_events.dart';
 import '../lead-blocs/lead-home-page-bloc/bloc_states.dart';
 import '../resources/services-dimens.dart';
 
+=======
+import '../resources/services-dimens.dart';
+import '../show_services_bloc/bloc.dart';
+import '../show_services_bloc/bloc_events.dart';
+import '../show_services_bloc/bloc_states.dart';
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 
 class ServicesWidget extends StatelessWidget {
   final ServiceEntity services;
@@ -43,7 +50,15 @@ class ServicesWidget extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       color: Colors.white.withOpacity(.01),
       child:  InkWell(
+<<<<<<< HEAD
         onTap: onTap,
+=======
+        onTap: (){
+          BlocProvider.of<ShowAllServicesBloc>(context).add(
+              ShowServiceDetailsEvent(
+                  index: 1,catId: state!.serviceEntity!.data!.categories![index].catId));
+        },
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
         child: Column(
           children: [
             Expanded(

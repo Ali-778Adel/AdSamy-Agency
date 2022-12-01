@@ -5,13 +5,22 @@ import 'package:ad_samy/core/resources/palette.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/core-features/authentiacation/presentation/widgets/auth-customButton.dart';
 import '../../../../../core/core-features/authentiacation/presentation/widgets/spacer-v.dart';
+<<<<<<< HEAD
 import '../lead-blocs/lead-service-details-bloc/service-details-states.dart';
 import '../resources/services-dimens.dart';
+=======
+import '../resources/services-dimens.dart';
+import '../show_services_bloc/bloc_states.dart';
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 
 class ServiceDetailsWidget extends StatelessWidget {
 
   final Function()onTap;
+<<<<<<< HEAD
   final ShowServiceDetailsStates1?state;
+=======
+  final ShowServiceDetailsStates?state;
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
   const ServiceDetailsWidget({Key? key,required this.onTap, this.state}) : super(key: key);
 
   @override
@@ -99,9 +108,21 @@ class ServiceDetailsWidget extends StatelessWidget {
     );
   }
 
+<<<<<<< HEAD
 
 
   Widget _horizontalScrollBar({BuildContext? context,ShowServiceDetailsStates1?states}) {
+=======
+  // List<Widget> _listsWidget(BuildContext context) {
+  //   return List.generate(
+  //       10,
+  //       (index) => Container(
+  //           margin: const EdgeInsets.only(right: 10),
+  //           child: _serviceImage(context, index: index)));
+  // }
+
+  Widget _horizontalScrollBar({BuildContext? context,ShowServiceDetailsStates?states}) {
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
     return SizedBox(
         height: ServicesDimens.cardH3,
         width: MediaQuery.of(context!).size.width,

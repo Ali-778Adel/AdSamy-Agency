@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:ad_samy/applications/lead-application/services/presentation/pages/lead-home-page.dart';
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import 'package:flutter/material.dart';
 import '../../applications/client-application/client-features/client-projects/presentation/pages/client-all-projects-page.dart';
 import '../../applications/client-application/client-features/client-projects/presentation/pages/client-notification-page.dart';

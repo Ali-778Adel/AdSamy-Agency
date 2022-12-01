@@ -1,19 +1,31 @@
+<<<<<<< HEAD
 import 'package:ad_samy/applications/lead-application/services/presentation/widgets/lead-app-bar.dart';
 import 'package:ad_samy/core/resources/core-dimens.dart';
 import 'package:ad_samy/core/widgets/intro-background-container.dart';
 import 'package:ad_samy/utils/ext/context.dart';
+=======
+import 'package:ad_samy/core/resources/core-dimens.dart';
+import 'package:ad_samy/core/widgets/intro-background-container.dart';
+import 'package:ad_samy/core/widgets/loading-widget.dart';
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/resources/lists.dart';
 import '../../data/data_source/services_static_data.dart';
+<<<<<<< HEAD
 
 import '../lead-blocs/lead-home-page-bloc/bloc.dart';
 import '../lead-blocs/lead-home-page-bloc/bloc_states.dart';
 
 import '../lead-blocs/lead-service-details-bloc/service-details-events.dart';
 import '../lead-blocs/lead-service-details-bloc/service-detaols-bloc.dart';
+=======
+import '../show_services_bloc/bloc.dart';
+import '../show_services_bloc/bloc_events.dart';
+import '../show_services_bloc/bloc_states.dart';
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import '../widgets/carousel-item.dart';
 import '../widgets/contact-us-item.dart';
 import '../widgets/our-services-item.dart';
@@ -55,7 +67,10 @@ class LeadHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
    appBar: LeadAppBar().call(context: context),
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
       body: _buildBody(context: context),
     );
   }
@@ -105,17 +120,37 @@ class LeadHomePage extends StatelessWidget {
             final data = state.serviceEntity!.data;
             return CarouselSlider(
               options: CarouselOptions(
+<<<<<<< HEAD
                 scrollPhysics:ScrollPhysics(parent: BouncingScrollPhysics()),
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
                   height: 400.0.sp,
                   autoPlay: true,
                   autoPlayAnimationDuration: Duration(seconds: 1),
                   viewportFraction: .9),
+<<<<<<< HEAD
               items:List.generate(data!.categories!.length, (index)
               => CarouselItem(imageUrl: '${data.imageBaseUrl}/${data.categories![index].catImage}'))
 
             );
           } else {
             return CustomShimmerWidget(child: CarouselItem(imageUrl: '',));
+=======
+              items: data!.categories!.map((i) {
+                return ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 1,
+                  itemBuilder: (BuildContext context, index) {
+                    return CarouselItem(
+                      imageUrl: '${data.imageBaseUrl}/${i.catImage}',
+                    );
+                  },
+                );
+              }).toList(),
+            );
+          } else {
+            return LoadingWidget();
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
           }
         } else {
           return Center();
@@ -136,7 +171,11 @@ class LeadHomePage extends StatelessWidget {
         if (state.showAllServicesStatus == ShowAllServicesStatus.success) {
           final data = state.serviceEntity!.data!.categories!;
           return Container(
+<<<<<<< HEAD
             height: 140.h,
+=======
+            height: 140.sp,
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
             child: ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: data.length,
@@ -148,11 +187,17 @@ class LeadHomePage extends StatelessWidget {
                       serviceTitle: data[index].catName,
                     ),
                     onTap: () {
+<<<<<<< HEAD
                       context.pushNamed(context,'service_details');
                       // BlocProvider.of<ServiceDetailsBloc>(context).add(
                       //     ShowServiceDetailsEvent1(
                       //       serviceId: data[index].catId!
                       //          ));
+=======
+                      BlocProvider.of<ShowAllServicesBloc>(context).add(
+                          ShowServiceDetailsEvent(
+                              catId: data[index].catId, index: 1));
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
                     },
                   );
                 }),

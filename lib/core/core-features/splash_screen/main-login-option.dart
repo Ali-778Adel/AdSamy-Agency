@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import 'package:ad_samy/applications/lead-application/services/presentation/pages/lead-home-page-controller.dart';
 import 'package:ad_samy/applications/lead-application/services/presentation/pages/lead-home-page.dart';
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import 'package:ad_samy/core/core-features/splash_screen/widgets/options-buttons.dart';
 import 'package:ad_samy/core/resources/core-dimens.dart';
 import 'package:ad_samy/core/widgets/intro-background-container.dart';
@@ -46,7 +49,11 @@ class MainLoginOption extends StatelessWidget {
                   child: OptionsButton(
                   buttonText: 'Home',
                   onTap: () {
+<<<<<<< HEAD
                     context.goTo(context, LeadHomePageController(),);
+=======
+                    context.goTo(context,const LeadLandingPage(),);
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
                   },),
                 ),
                 Padding(

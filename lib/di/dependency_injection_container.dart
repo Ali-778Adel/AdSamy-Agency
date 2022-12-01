@@ -11,8 +11,11 @@ import 'package:ad_samy/applications/employee-application/employee-features/empl
 import 'package:ad_samy/applications/employee-application/employee-features/employee-overview-feature/domain/use-case/team-task-details-use-case.dart';
 import 'package:ad_samy/applications/employee-application/employee-features/employee-overview-feature/domain/use-case/update-task-use-case.dart';
 import 'package:ad_samy/applications/employee-application/employee-features/employee-overview-feature/presentation/bloc/team-bloc.dart';
+<<<<<<< HEAD
 import 'package:ad_samy/applications/lead-application/services/presentation/lead-blocs/lead-form-bloc/lead-form-bloc.dart';
 import 'package:ad_samy/applications/lead-application/services/presentation/lead-blocs/lead-service-details-bloc/service-detaols-bloc.dart';
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import 'package:ad_samy/core/network/network-checker.dart';
 
 import 'package:get_it/get_it.dart';
@@ -37,7 +40,11 @@ import '../applications/lead-application/services/domain/repository/domain_repos
 import '../applications/lead-application/services/domain/use_cases/send-lead-form-sue-case.dart';
 import '../applications/lead-application/services/domain/use_cases/show-service-details-use-case.dart';
 import '../applications/lead-application/services/domain/use_cases/show_services_use_case.dart';
+<<<<<<< HEAD
 import '../applications/lead-application/services/presentation/lead-blocs/lead-home-page-bloc/bloc.dart';
+=======
+import '../applications/lead-application/services/presentation/show_services_bloc/bloc.dart';
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 import '../core/core-features/authentiacation/data/data-source/auth-data-source.dart';
 import '../core/core-features/authentiacation/data/data-source/auth-local-data-source.dart';
 import '../core/core-features/authentiacation/data/repository/auth-repository-impl.dart';
@@ -87,8 +94,11 @@ Future<void> init() async {
         showServiceDetailsUseCase: sl(),
         registerLeadFormUseCase: sl(),
       ));
+<<<<<<< HEAD
   sl.registerFactory(() => ServiceDetailsBloc(showServiceDetailsUseCase: sl()));
   sl.registerFactory(() =>LeadFormBloc(registerLeadFormUseCase: sl()) );
+=======
+>>>>>>> 230a0cab7852a1b5ee14ebb56c6bad628c9998c7
 
   sl.registerLazySingleton(() => GetAllServicesUseCase(repository: sl()));
   sl.registerLazySingleton(() => ShowServiceDetailsUseCase(repository: sl()));
